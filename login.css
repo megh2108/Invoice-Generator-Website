@@ -1,0 +1,124 @@
+body  
+{  
+  width: 100%; 
+  padding-top: 10px;
+  font-size: 150%; 
+    background: url("xyz.jpg") ;  
+    font-family: 'Arial';  
+    background-size: cover;
+    text-align: center;
+    background-repeat: no-repeat;
+}
+
+.login{  
+        width: 100px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 100px;  
+        padding: 50px; 
+        padding-bottom: 10px; 
+        background: #23463f;  
+        border-radius: 15px ;  
+          
+}
+
+div.main{
+  
+  width: 400px;
+  padding-right: 100px;
+  margin: 50px auto 0px auto;
+}
+
+h2{  
+    text-align: center;  
+    color: white;  
+    padding: 20px;  
+}
+
+div.login{
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+  color: #fff;
+}
+
+label{  
+  padding-right: 210px;
+    color: #08ffd1;  
+    font-size: 17px;  
+}
+
+#Uname{  
+  width: 300px;
+  height: 30px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  
+  background-color: #fff;
+  box-shadow: inset 1px 1px 5px rgba(0,0,0,0.3); 
+}
+
+#Pass{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}
+
+#btn{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;  
+}
+
+span{  
+    color: white;  
+    font-size: 17px;  
+}  
+a{  
+    float: right;  
+    background-color: grey;  
+}  
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 250px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  #btn {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: cyan;
+    text-align: center;
+    cursor: pointer;
+    width: 50%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  #btn:hover, a:hover {
+    opacity: 0.7;
+  } 
