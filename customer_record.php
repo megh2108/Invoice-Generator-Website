@@ -121,48 +121,7 @@ $res=$obj->selectquery("customer_details");
             }
         </style>
         <script src="customer_record.js">
-                    // $('#fil').click(function(){
-                        
-                    //     let mb=$('#mb').val();
-                    //     if(mb!="")
-                    //     {
-
-                    //         $.ajax({
-                    //             method:"post",
-                    //             url:"http://localhost/internship/invoice/filter.php",
-                    //             data:{
-                    //                 Mobile: mb
-                    //             }
-    
-                    //         }).done(function(response){
-                                
-                    //             $('#t1').html(response);
-                    //         })
-                    //     }
-                        
-                    // });
-
-                    // $('.del').click(function(){
-
-                    // let val = $(this).val();
-                    // console.log(val);
-
-                    // $.ajax(
-                    // {
-                    // method: "POST",
-                    // url:"http://localhost/Invoice/delete_cust_record.php",
-
-                    // data:
-                    // {
-                    // value: val 
-                    // }
-                    // }).done(function(response){
-
-                    // alert("Data deleted successfully");
-                    // $('#t_'+val).html("");
-                    // });
-
-                    // });
+                  
                 </script>
     
 </body>

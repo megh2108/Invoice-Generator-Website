@@ -13,8 +13,8 @@ $row = mysqli_fetch_assoc($res);
 $val1 = $row['invoice_no'];
 $arr1 = array('invoice_no'=>$val1);
 
-$obj->deletequery("order_item_detail",$arr1);
 $obj->deletequery("record_details",$arr);
+$obj->deletequery("order_item_detail",$arr1);
 $obj->deletequery("customer_details",$arr);
 
 ?>

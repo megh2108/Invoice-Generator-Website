@@ -10,7 +10,7 @@
 
     $arr = array('invoice_no'=>$val);
 
-    $obj->deletequery("order_item_detail",$arr);
     $obj->deletequery("record_details",$arr);
+    $obj->deletequery("order_item_detail",$arr);
 
 ?>
