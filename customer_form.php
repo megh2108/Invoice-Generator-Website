@@ -324,7 +324,7 @@ require ('session.php');
 
         function checkDCname(dcname)
             {
-                return /[\W\d]+/.test(dcname);
+                return /[\W\d]+$/.test(dcname);
             }
 
         function checkMobNo(mobno)
