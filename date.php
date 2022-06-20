@@ -34,6 +34,6 @@ SELECT * FROM order_item_detail WHERE order_date BETWEEN $cdate and $ydate; -->
 // $shr = $obj->sel_bet_query("record_details",$date);
 
 // echo "<br>";
-echo "Hello";
+echo "Tilak";
 // echo mysqli_num_rows($shr);
 ?>
