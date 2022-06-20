@@ -36,4 +36,5 @@ SELECT * FROM order_item_detail WHERE order_date BETWEEN $cdate and $ydate; -->
 // echo "<br>";
 echo "Tilak";
 // echo mysqli_num_rows($shr);
+// mysqli_num_rows
 ?>
