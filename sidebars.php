@@ -47,7 +47,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto" id="nav">
       <li class="nav-item">
-        <a href="dashboard.php" class="nav-link active" aria-current="page">
+        <a href="dashboard.php" class="nav-link text-white" aria-current="page">
           <svg class="bi pe-none me-2" width="6" height="16"><use xlink:href="#home"/></svg>
           Dashboard
         </a>

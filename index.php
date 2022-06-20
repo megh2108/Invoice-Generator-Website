@@ -51,7 +51,7 @@
                     <input type="password" name="password" class="form-control signin_pass"  id="Pass" value="tcpl2003">
                 </div>
 
-                <button class="btn btn-danger signin-btn" id="btn" value="submit" >Sign in</button>
+                <button type="button" class="btn btn-danger signin-btn" id="btn" value="submit" >Sign in</button>
             </form>
             </div>
         </div>

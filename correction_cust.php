@@ -143,25 +143,16 @@ echo $html;
 ?>
 
 <script>
-
-    let ocname="<?php echo $row['oc_name']?>";
-    let dcname="<?php echo $row['dc_name']?>";
-    let mobno="<?php echo $row['Mobile']?>";
-    let badd="<?php echo $row['bill_add']?>";
-    let bstate="<?php echo $row['bstate']?>";
-    let bcode="<?php echo $row['bcode']?>";
-    let sadd="<?php echo $row['ship_add']?>";
-    let sstate="<?php echo $row['sstate']?>";
-    let scode="<?php echo $row['scode']?>";
-    $('#ocname').val(ocname);
-    $('#dcname').val(dcname);
-    $('#mobno').val(mobno);
-    $('#badd').val(badd);
-    $('#bstate').val(bstate).change();
-    $('#bcode').val(bcode);
-    $('#sadd').val(sadd);
-    $('#sstate').val(sstate).change();
-    $('#scode').val(scode);
+   
+    $('#ocname').val("<?php echo $row['oc_name']?>");
+    $('#dcname').val("<?php echo $row['dc_name']?>");
+    $('#mobno').val("<?php echo $row['Mobile']?>");
+    $('#badd').val("<?php echo $row['bill_add']?>");
+    $('#bstate').val("<?php echo $row['bstate']?>").change();
+    $('#bcode').val("<?php echo $row['bcode']?>");
+    $('#sadd').val("<?php echo $row['ship_add']?>");
+    $('#sstate').val("<?php echo $row['sstate']?>").change();
+    $('#scode').val("<?php echo $row['scode']?>");
     $('.select1').select2();
     $('.select').select2();
 

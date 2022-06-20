@@ -21,20 +21,15 @@ $('#yes').click(function() {
     });
 });
 
-// $('#no').click(function(){
-
-//     jQuery.fancybox.close();
-
-// });
 
 
+var header = document.getElementById("nav");  //$('#nav');
+var btns = header.getElementsByClassName("nav-link"); //$('.nsv-link').each({})
 
-var header = document.getElementById("nav");
-var btns = header.getElementsByClassName("nav-link");
+let current_url = window.location.href;
+
 for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-    });
+    if(btns[i].href == current_url) {
+        btns[i].className += " active";
+    }
 }
