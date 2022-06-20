@@ -7,26 +7,26 @@
     })
 })()
 
-    
-    $('#yes').click(function(){
-        
-        $.ajax({
-            method: "post",
-            url: "http://localhost/Invoice/sign_out.php",
-    
-        }).done(function() {
-            window.location.assign("http://localhost/Invoice/login.php");
-            // window.location.assign("http://localhost/Invoice/index.php");
-    
-        });    
-    }); 
 
-    // $('#no').click(function(){
+$('#yes').click(function() {
 
-    //     jQuery.fancybox.close();
+    $.ajax({
+        method: "post",
+        url: "http://localhost/Invoice/sign_out.php",
 
-    // });
-    
+    }).done(function() {
+        // window.location.assign("http://localhost/Invoice/login.php");
+        window.location.assign("http://localhost/Invoice/index.php");
+
+    });
+});
+
+// $('#no').click(function(){
+
+//     jQuery.fancybox.close();
+
+// });
+
 
 
 var header = document.getElementById("nav");

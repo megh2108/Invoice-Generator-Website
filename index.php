@@ -80,8 +80,8 @@
            console.log(msg);
            if(msg=="true")
            {
-            alert("data  true:");
-            //  window.location.assign("http://localhost/Invoice/dashboard.php");   
+            // alert("data  true:");
+             window.location.assign("http://localhost/Invoice/dashboard.php");   
            }
            else{
             alert("data not true:");
