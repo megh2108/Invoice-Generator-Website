@@ -29,7 +29,7 @@
         <div class="container">
             <h3 id="h1">Item Insert Form</h3>
         <div class="form">
-          <form method="post"  class="form1">
+          <form method="post" class="form1" name="frm">
 
                     <table class="table table-bordered">
                         <tr>
@@ -66,9 +66,88 @@
     <script type="text/javascript">
        
         $('.submit-btn').click(function(){
+            console.log("hi");
         let itname=$('#itname').val();
         let bprice=$('#bprice').val();
         let gst=$('#gst').val();
+
+        var valid = check();
+        if(!valid){
+            return;
+        }
+
+        function check()
+        {
+            if(itname==""){
+                frm.itname.focus();
+                alert("Please fill the 'Item Name' field");
+                return false;
+            }
+
+            else if(checkITname(itname))
+                {
+                    alert("Only characters are allowed in the 'Item Name' field");
+                    frm.itname.focus();
+                    return false;
+                }
+
+
+            if(bprice==""){
+                frm.bprice.focus();
+                alert("Please fill the 'Base Price' field");
+                return false;
+            }
+
+           else if(bprice<=0){
+                    alert("Price cannot be less than or equal to zero");
+                    return false;
+                }
+
+            else if(!checkBPrice(bprice))
+                {
+                    alert("Only digits and dots are allowed in the 'Base Price' field");
+                    frm.bprice.focus();
+                    return false;
+                }
+
+
+             if(gst==""){
+                 frm.gst.focus();
+                 alert("Please fill the 'GST' field");
+                 return false;
+            }
+
+            else if(gst>30 || gst<0){
+                    alert("Maximum allowed gst is 30% and Minimum allowed gst is 0%");
+                    return false;
+                }
+
+            else if(!checkGST(gst))
+                {
+                    alert("Only digits are allowed in the 'GST' field ");
+                    frm.gst.focus();
+                    return false;
+                }
+
+                else{
+                    return true;
+                }
+            }
+
+            function checkITname(itname)
+            {
+                return /[\W\d]+$/.test(itname);
+            }
+
+        function checkBPrice(bprice)
+            {
+                return /[\d]$/.test(bprice);
+            }
+
+        function checkGST(gst)
+            {
+                return /[\d]$/.test(gst);
+            }
         
         $.ajax({
             method:"post",
