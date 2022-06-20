@@ -65,22 +65,29 @@ include 'sidebars.php';
 
             let opass = $('#oldpass').val();
             let npass = $('#newpass').val();
+            let repass = $('#repass').val();
+            if(npass == repass){
 
-            $.ajax({
-                method: "post",
-                url: "http://localhost/Invoice/set_pass.php",
-                data:{
-                    opassw:opass,
-                    npassw:npass
-                }
-            })
-            .done(function(){
-                alert("data updated successfully");
-             });
+                $.ajax({
+                    method: "post",
+                    url: "http://localhost/Invoice/set_pass.php",
+                    data:{
+                        opassw:opass,
+                        npassw:npass
+                    }
+                })
+                .done(function(msg){
+                    alert(msg);
+                 });
+    
+                 $('#oldpass').val('');
+                 $('#newpass').val('');
+                 $('#repass').val('');
+            }
+            else{
+                alert("Password are not match..");
+            }
 
-             $('#oldpass').val('');
-             $('#newpass').val('');
-             $('#repass').val('');
 
         });
     </script>
