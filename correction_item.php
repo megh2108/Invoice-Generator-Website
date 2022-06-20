@@ -46,13 +46,9 @@ echo $html;
 
 <script>
 
-        let itname= "<?php echo $row['item_name'] ?>";
-        let bprice="<?php echo $row['base_price'] ?>";
-        let gst="<?php echo $row['GST'] ?>";
-
-        $('#itname').val(itname);
-        $('#bprice').val(bprice);
-        $('#gst').val(gst);
+        $('#itname').val("<?php echo $row['item_name'] ?>");
+        $('#bprice').val("<?php echo $row['base_price'] ?>");
+        $('#gst').val("<?php echo $row['GST'] ?>");
 
         $('#sub').click(function(){
             var item = value;

@@ -96,35 +96,7 @@ $res=$obj->selectquery("item");
     </div>
 
     <div  id="correct" style="display:none;">
-          <!-- <form method="post"  class="form1">
-
-                    <table class="table table-bordered border border-2 border-warning table-hover table-success table-striped"">
-                        <tr>
-                            <td>Item Name:</td>
-                            <td><input type="text" name="itname" id="itname"></td>
-                            
-                        </tr>
-                        
-                        <tr>
-                            <td>Base Price</td>
-                            <td><input type="text" name="bprice" id="bprice"></td>
-                        </tr>
-                        <tr>
-                            <td> GST</td>
-                            <td><input type="text" name="gst" id="gst"></td>
-                        </tr>
-                       
-                          
-                     
-                        <tr >
-                            <td id="res"><input type="reset" value="Reset" class="reset"></td>
-                            <td id="sub" >
-                                <input type="button" value="Submit" class="submit-btn" id="sub">
-                            </td>
-
-                        </tr>
-                    </table>
-                </form> -->
+        
             </div>
 
 <script>
