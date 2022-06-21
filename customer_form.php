@@ -367,8 +367,8 @@ require ('session.php');
                     sstate  :sstate,
                     scode   :scode
                 }
-            }).done(function(){
-                alert("data inserted successfully");
+            }).done(function(msg){
+                alert(msg);
             });
         //     $('#ocname').val('');
         //     $('#dcname').val('');
