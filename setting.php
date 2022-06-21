@@ -26,7 +26,7 @@ include 'sidebars.php';
         <div class="container">
             <h3 id="h1">Setting</h3>
             <div class="form">
-          <form>
+          <form name="frm">
 
                     <table>
                         <tr>
@@ -66,9 +66,22 @@ include 'sidebars.php';
             let opass = $('#oldpass').val();
             let npass = $('#newpass').val();
             let repass = $('#repass').val();
-            if(npass == repass){
 
-                $.ajax({
+            var valid = check();
+
+            if(!valid){
+                return;
+            }
+
+            function check(){
+
+     if((npass || repass) == ""){
+        alert("Password Field cannot be null");
+        return false;
+     }
+
+     else if(npass == repass){
+        $.ajax({
                     method: "post",
                     url: "http://localhost/Invoice/set_pass.php",
                     data:{
@@ -83,13 +96,14 @@ include 'sidebars.php';
                  $('#oldpass').val('');
                  $('#newpass').val('');
                  $('#repass').val('');
-            }
-            else{
-                alert("Password are not match..");
-            }
+                }
 
-
+                else{
+                    alert("New and Re-entered Passwords does not match");
+                }
+            }
         });
+
     </script>
 
     </body>

@@ -141,7 +141,7 @@ class DB{
                 }
             }
 
-       echo $upd = "UPDATE $tabname SET" .$upd_query. " WHERE ".$set_query;
+        $upd = "UPDATE $tabname SET" .$upd_query. " WHERE ".$set_query;
         }
 
        mysqli_query($con,$upd);

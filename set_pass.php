@@ -27,7 +27,7 @@ if($oldpass == $row['password']){
 
 }
 else{
-    echo "Password Incorrect";
+    echo "Old Password Incorrect";
 }
 
 
