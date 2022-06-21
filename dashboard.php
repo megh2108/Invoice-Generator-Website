@@ -10,7 +10,7 @@ $ob=new DB();
 
 <head>
   <title>
-    Dashboard Page
+    Dashboard
   </title>
 
   <!-- JQuery Include -->

@@ -5,7 +5,7 @@ $('#fil').click(function() {
 
         $.ajax({
             method: "post",
-            url: "http://localhost/internship/invoice/filter.php",
+            url: "http://localhost/Invoice/filter.php",
             data: {
                 Mobile: mb
             }
@@ -124,5 +124,5 @@ $('.edit').click(function() {
 
 
 
-    $('.select1').select2();
-    $('.select').select2();
+$('.select1').select2();
+$('.select').select2();
