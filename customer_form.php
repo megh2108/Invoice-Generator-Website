@@ -4,7 +4,7 @@ require ('session.php');
 <!DOCTYPE html> 
 <html>
     <head>
-        <title>New</title>
+        <title>Customer Detail Form</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, intial-scale=1.0">
 
@@ -27,7 +27,7 @@ require ('session.php');
 </div>
 
         <div class="container">
-            <h3 id="h1">Customer Details</h3>
+            <h3 id="h1">Customer Details Form</h3>
             <div class="form">
           <form method="post" action="" class="form1" name="frm">
 

@@ -9,7 +9,7 @@ $res1=$ob->selectquery("item");
 <!DOCTYPE html> 
 <html>
     <head>
-        <title>New</title>
+        <title>Item Details Form</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, intial-scale=1.0">
 
@@ -32,7 +32,7 @@ $res1=$ob->selectquery("item");
 </div>
 
         <div class="container">
-            <h3 id="h1">New Invoice</h3>
+            <h3 id="h1">Item Details Form</h3>
             <div class="form">
           <form method="post" action="" class="form1" name="frm">
 
