@@ -1,3 +1,25 @@
+<?php
+require_once(__DIR__.'/TCPDF-main/examples/tcpdf_include.php');
+include 'class.php';
+require 'session.php';
+
+$ob = new DB();
+
+$val1=$_GET['id'];
+$arr1=array('invoice_no'=>$val1);
+
+$uname=$_SESSION['uname'];
+$arr = array('username'=>$uname);
+$res = $ob->selectquery('c_details',$arr);
+// $res1 = $ob->selectquery('record_details',$arr1);
+$row = mysqli_fetch_assoc($res);
+
+$row1=mysqli_fetch_assoc($res1);
+
+?>
+
+<!-- <style>file_get_contents(__DIR__."/external.css")</style>; -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,48 +34,6 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
-
-    
-    <!-- <style>
-        
-    table{
-        width: 100%;
-    }
-    td{
-        
-      font-weight: bold;
-      font-family: Arial, Helvetica, sans-serif ;
-      /* padding-left: 5px; */
-     
-    }
-    tr{
-        height: 45px; 
-        font-weight: bold;
-    }
-    th{
-      text-align: center;
-      border: 2px solid;
-      font-weight: bold;
-    }
-
-    table, th, td {
-    border: 2px solid black;
-    border-collapse: collapse;
-    }
-    .t1{
-      font-weight: lighter;
-      text-align: center;
-    }
-    
-    .t2{
-      text-align: center;
-    }
-    .t3{
-      padding-left: 5px;
-    }
-    
-</style> -->
-
 
 </head>
 <body>
@@ -107,16 +87,16 @@
             <tr>
                 <td  style="padding-left:150px;"></td>
                 <td  style="background-color: aqua;" class="t1">
-                    <h2>Tyre Channel Private Limited</h2>
-                    1st Floor Of Bank Of Maharastra Building,<br>
-                    Station Road,Anand, Dist - Anand <br>
-                    Gujarat - 388001, India 
+                    <h2><?php echo $row['c_name']?></h2>
+                   <?php echo $row['add_line1']?> <br>
+                   <?php echo $row['add_line2']?> <br>
+                   Dist-<?php echo $row['district'].",".$row['state'].",".$row['country']?> 
                 </td>
                 <td  style="text-align:center;padding-top:10px;">Original for Receipient</td>
             </tr>
             
             <tr>
-              <td  colspan="3" style="text-align:center;"> GST NO: 24AAGCT5461R1ZP &emsp; PAN NO: AAGCT5461R</td> 
+              <td  colspan="3" style="text-align:center;"> GST NO: <?php echo $row['GST_no']?> &emsp; PAN NO: <?php echo $row['PAN_no']?></td> 
             </tr>
 
         </table>
@@ -129,7 +109,7 @@
               </tr>
               <tr>
             
-                <td  class="t3" colspan="4" > Invoice No : </td>
+                <td  class="t3" colspan="4" > Invoice No : <?php echo $row1['GST_no']?> </td>
                 <td  class="t3" colspan="2">Transport Mode : </td>
               </tr>
               <tr>
@@ -141,7 +121,7 @@
                <td  class="t3" colspan="2">Date of Supply : </td>
               </tr>
                <tr>
-                <td class="t3" colspan="3">State : </td>
+                <td class="t3" colspan="3">State : <?php echo $row['state']?> </td>
                 <td class="t3" >Code : </td>
                 <td class="t3" >Place of Supply : </td>
                 
@@ -373,10 +353,10 @@
        
         </table>
 
-        <button type="button" id="printMe">Print</button>
-
-
 </div>   
+
+<button type="button" id="printMe">Print</button>
+
 
 <script type="text/javascript">
 $('#printMe').click(function() {
