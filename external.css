@@ -1,0 +1,40 @@
+table {
+    width: 100%;
+}
+
+td {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    /* padding-left: 5px; */
+}
+
+tr {
+    height: 45px;
+    font-weight: bold;
+}
+
+th {
+    text-align: center;
+    border: 2px solid;
+    font-weight: bold;
+}
+
+table,
+th,
+td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.t1 {
+    font-weight: lighter;
+    text-align: center;
+}
+
+.t2 {
+    text-align: center;
+}
+
+.t3 {
+    padding-left: 5px;
+}

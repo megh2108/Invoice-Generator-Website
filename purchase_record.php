@@ -80,6 +80,7 @@ $res1=$obj->selectquery("c_details",$arr);
             </thead>
             <tbody>
                <?php $i=1;
+               $h1;
                 $row1=mysqli_fetch_assoc($res1);
                 $code=$row1['code'];
 
@@ -92,7 +93,9 @@ $res1=$obj->selectquery("c_details",$arr);
                         <td><?php echo $code.$row['invoice_no']?></td>
                         <td><?php echo $row['order_date']?></td>
                         <td><button  data-fancybox data-src="#content" id="btn" class="btn btn-info" value="<?php echo $row['invoice_no']?>">view</button></td>
-                        <td><button class="del-btn btn btn-info">print</button></td>
+                      <?php  $h1=$row['invoice_no']; ?>
+                        <td><button class="print-btn btn btn-info"><a href ="table.php?id=<?php echo $h1; ?>"
+                        target="_blank">print</a></button></td>
                         <td><button class="del-btn btn btn-info" value="<?php echo $row['invoice_no']?>">Delete</button></td>
                     </tr><?php
                     $var++;
@@ -147,6 +150,8 @@ $res1=$obj->selectquery("c_details",$arr);
                 
                 // console.log(val);
             });
+
+            
 
         $('.del-btn').click(function(){
 

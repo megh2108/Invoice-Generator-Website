@@ -59,7 +59,7 @@ $res=$obj->selectquery("item");
     
     <div class="container" id="con">
             <header id="h1"><h3>Records</h3></header>
-        <h1 id="h">Item Reords</h1>
+        <h1 id="h">Item Records</h1>
         <table id="tab"class="table table-bordered table-hover table-success table-striped">
             <thead class="table-info">
                 <th class="serial">serial</th>
