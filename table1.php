@@ -6,13 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <!-- Bootstrap Links -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
     
-    <style>
+    <!-- <style>
+        
+    table{
+        width: 100%;
+    }
+    td{
+        
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif ;
+      /* padding-left: 5px; */
+     
+    }
+    tr{
+        height: 45px; 
+        font-weight: bold;
+    }
+    th{
+      text-align: center;
+      border: 2px solid;
+      font-weight: bold;
+    }
+
+    table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    }
+    .t1{
+      font-weight: lighter;
+      text-align: center;
+    }
+    
+    .t2{
+      text-align: center;
+    }
+    .t3{
+      padding-left: 5px;
+    }
+    
+</style> -->
+
+
+</head>
+<body>
+
+<div id="border">
+
+<style>
         
     table{
         width: 100%;
@@ -52,14 +100,9 @@
     
 </style>
 
-
-</head>
-<body>
-
-<div class="border">
 <!-- Table 1 -->
         <!-- <table class="border1 table m-0 mt-5 "> -->
-        <table class="table m-0 mt-5 ">
+        <table class="table m-0 mt-5 " style="border:2px solid black;">
 
             <tr>
                 <td  style="padding-left:150px;"></td>
@@ -330,9 +373,23 @@
        
         </table>
 
+        <button type="button" id="printMe">Print</button>
 
 
-</div>        
+</div>   
+
+<script type="text/javascript">
+$('#printMe').click(function() {
+    var divContents = document.getElementById("border").innerHTML;
+    var a = window.open('', '', 'height=500, width=500');
+    a.document.write('<html>');
+    a.document.write('<body>');
+    a.document.write(divContents);
+    a.document.write('</body></html>');
+    a.document.close();
+    a.print();
+});
+</script>
 
 
 
