@@ -39,7 +39,7 @@ $res=$obj->selectquery("customer_details");
                     <th>Sr_No.</th>    
                     <th>customer Id</th>
                     <th>o_customer</th>
-                    <th>D_customer</th>
+                    <!-- <th>D_customer</th> -->
                     <th>mobile</th>
                     <th>Billing_add</th>
                     <th>Billing_State</th>
@@ -57,7 +57,7 @@ $res=$obj->selectquery("customer_details");
                             <td><?php echo $i?></td>
                             <td><?php echo $row['customer_id']?></td>
                             <td><?php echo $row['oc_name']?></td>
-                            <td><?php echo $row['dc_name']?></td>
+                            <!-- <td><?php //echo $row['dc_name']?></td> -->
                             <td><?php echo $row['Mobile']?></td>
                             <td><?php echo $row['bill_add']?></td>
                             <td><?php echo $row['bstate']?></td>

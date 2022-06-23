@@ -2,24 +2,43 @@
 require_once(__DIR__.'/TCPDF-main/examples/tcpdf_include.php');
 include 'class.php';
 require 'session.php';
+include 'digit_to_word.php';
 
 $ob = new DB();
 
 $val1=$_GET['id'];
-$arr1=array('invoice_no'=>$val1);
 
 $uname=$_SESSION['uname'];
+
 $arr = array('username'=>$uname);
 $res = $ob->selectquery('c_details',$arr);
-$res1 = $ob->selectquery('record_details',$arr1);
 $row = mysqli_fetch_assoc($res);
 
+$arr1=array('invoice_no'=>$val1);
+$res1 = $ob->selectquery('record_details',$arr1);
 $row1=mysqli_fetch_assoc($res1);
+
 $custid=$row1['customer_id'];
+$dcid=$row1['dc_id'];
+
 $arr2=array('customer_id'=>$custid);
 $res2 = $ob->selectquery('customer_details',$arr2);
 $row2=mysqli_fetch_assoc($res2);
 
+$arr3=array('customer_id'=>$dcid);
+$res3 = $ob->selectquery('customer_details',$arr3);
+$row3=mysqli_fetch_assoc($res3);
+
+$res4=$ob->selectquery('order_item_detail',$arr1);
+
+// $arr5 = array('item_name'=>$item);
+// $res5 = $ob->selectquery('item',$arr5);
+// $row5 = mysqli_fetch_assoc($res5);
+$ph_no = $row['ph_no'];
+
+$arr6=array('ph_no'=>$ph_no);
+$res6 = $ob->selectquery('bank_details',$arr6);
+$row6=mysqli_fetch_assoc($res6);
 
 ?>
 
@@ -31,7 +50,7 @@ $row2=mysqli_fetch_assoc($res2);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Invoice</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -149,21 +168,21 @@ $row2=mysqli_fetch_assoc($res2);
               </tr>
               <tr >
                 <td class="t3" colspan="6">Name : <?php echo $row2['oc_name']?></td>
-                <td class="t3" colspan="6">Name : </td>
+                <td class="t3" colspan="6">Name : <?php echo $row3['oc_name']?> </td>
               </tr>
               <tr>
-                <td class="t3" colspan="6">Address : </td>
-                <td class="t3" colspan="6">Address : </td>
+                <td class="t3" colspan="6">Address : <?php echo $row2['bill_add']?></td>
+                <td class="t3" colspan="6">Address : <?php echo $row3['ship_add']?></td>
               </tr>
               <tr>
                <td class="t3" colspan="6">GSTIN : </td>
                <td class="t3" colspan="6"> GSTIN : </td>
               </tr>
                <tr>
-                <td class="t3" colspan="4">State : </td>
-                <td class="t3" colspan="2">Code :</td>
-                <td class="t3" colspan="4" >State : </td>
-                <td class="t3" colspan="2">Code :</td>
+                <td class="t3" colspan="4">State : <?php echo $row2['bstate']?></td>
+                <td class="t3" colspan="2">Code : <?php echo $row2['bcode']?></td>
+                <td class="t3" colspan="4" >State : <?php echo $row3['sstate']?></td>
+                <td class="t3" colspan="2">Code : <?php echo $row3['scode']?></td>
               </tr>
             </table>
             
@@ -195,111 +214,94 @@ $row2=mysqli_fetch_assoc($res2);
               <th>Amount</th>
             </tr>
 
+
+           <?php 
+           $i=1;
+           $w_total=0;
+           $amnt_total=0;
+           $gst_amnt_total=0;
+           $final_total=0;
+           
+           while($row4=mysqli_fetch_assoc($res4))
+           {
+             $arr5 = array('item_name'=>$row4['item']);
+             $res5 = $ob->selectquery('item',$arr5);
+             $row5 = mysqli_fetch_assoc($res5);
+
+            ?>
+
             <tr  >
-              <td class="t1">1</td>
-              <td class="t1" colspan="2">Tyre Scrap Crumb</td>
+              <td class="t1"><?php echo $i; ?></td>
+              <td class="t1" colspan="2"><?php echo $row4['item']; ?></td>
+
+             
+
               <td class="t1">40040000</td>
-              <td class="t1">32830</td>
-              <td class="t1">20.3</td>
-              <td class="t1">666449</td>
+              <td class="t1"><?php echo $row4['quantity']; ?></td>
+              <td class="t1"><?php echo $row5['base_price']; ?></td>
+              <td class="t1"><?php echo $amnt = $row4['quantity']*$row5['base_price']; ?></td>
               <td class="t1">0</td>
-              <td class="t1">666449</td>
-              <td class="t1">18</td>
-              <td class="t1">119960.82</td>
-              <td class="t1">786409.82</td>
+              <td class="t1"><?php echo $amnt; ?></td>
+              <td class="t1"><?php echo $row5['GST']; ?></td>
+              <td class="t1"><?php echo $gstamnt = $row4['quantity']*$row5['base_price']* $row5['GST']*0.01 ?></td>
+              <td class="t1"><?php echo $row4['final_price']; ?></td>
+              
             </tr>
-            <tr >
-              <td class="t1">2</td>
-              <td class="t1" colspan="2">Tyre Scrap Crumb</td>
-              <td class="t1">40040000</td>
-              <td class="t1">32830</td>
-              <td class="t1">20.3</td>
-              <td class="t1">666449</td>
-              <td class="t1">0</td>
-              <td class="t1">666449</td>
-              <td class="t1">18</td>
-              <td class="t1">119960.82</td>
-              <td class="t1">786409.82</td>
-            </tr>
-            <tr >
-              <td class="t1">3</td>
-              <td class="t1" colspan="2">Tyre Scrap Crumb</td>
-              <td class="t1">40040000</td>
-              <td class="t1">32830</td>
-              <td class="t1">20.3</td>
-              <td class="t1">666449</td>
-              <td class="t1">0</td>
-              <td class="t1">666449</td>
-              <td class="t1">18</td>
-              <td class="t1">119960.82</td>
-              <td class="t1">786409.82</td>
-            </tr>
+              <?php
+               $w_total+=$row4['quantity'];
+               $amnt_total+=$amnt;
+               $gst_amnt_total+=$gstamnt;
+               $final_total += $row4['final_price'];
+              
+              ?>
             
             
-            <!-- <tr>
-              <td></td>
-              <td colspan="2"></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td colspan="2"></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr> -->
+            <?php
+            $i++;
+           }
+            ?>
+            
             
             <tr>
               <td  style="background-color: aqua;" class="t2" colspan="4">Total</td>
-              <td class="t1">32830</td>
+              <td class="t1"><?php echo $w_total; ?></td>
               <td class="t1"></td>
-              <td class="t1">66449</td>
+              <td class="t1"><?php echo $amnt_total; ?></td>
               <td class="t1">0</td>
-              <td  class="t1">66449</td>
+              <td  class="t1"><?php echo $amnt_total; ?></td>
               <td  class="t1"></td>
-              <td  class="t1">119960.82</td>
-              <td  class="t1">786409.82</td>
+              <td  class="t1"><?php echo $gst_amnt_total; ?></td>
+              <td  class="t1"><?php echo $final_total; ?></td>
               
             </tr>
             
             <tr>
               <td  style="background-color: aqua;" class="t2" colspan="8">Total Invoice amount in words</td>
               <td class="t3" colspan="3">Total Amount before Tax</td>
-              <td class="t1">666449</td>
+              <td class="t1"><?php echo $amnt_total; ?></td>
             </tr>
 
             <tr>
-              <td rowspan="5" colspan="8"></td>
+              <td rowspan="5" colspan="8"  class="t2" ><?php digit_to_word($final_total);?></td>
               <td class="t3" colspan="3">Add: IGST</td>
-              <td class="t1">119960.82</td>
+              <td class="t1"><?php echo $gst_amnt_total; ?></td>
             </tr>
             <tr>
               <td class="t3" colspan="3">Total Amount after Tax:</td>
-              <td class="t1">786409.82</td>
+              <td class="t1"><?php echo $final_total; ?></td>
             </tr>
-             
+
+        
             <tr>
               <td class="t3" colspan="3">TCS @ 0.1%</td>
-              <td class="t1">786.41</td>
+              <!-- <td class="t1"><?php //echo $tcs= $final_total*0.001 ?></td> -->
+              <td class="t1">0</td>
             </tr>
              
             <tr>
               <td class="t3" colspan="3">Net TOTAL</td>
-              <td class="t1">787196.23</td>
+              <td class="t1"><?php echo $final_total; ?></td>
+              
             </tr>
              
             <tr>
@@ -328,15 +330,15 @@ $row2=mysqli_fetch_assoc($res2);
           </tr>
           
           <tr>
-            <td class="t3" colspan="4">Bank Name:</td>
+            <td class="t3" colspan="4">Bank Name: <?php echo $row6['bank_name']; ?></td>
           </tr>
 
           <tr>  
-            <td class="t3" colspan="4">Bank A/C:</td>
+            <td class="t3" colspan="4">Bank A/C: <?php echo $row6['acc_no']; ?></td>
           </tr>
           
           <tr>
-            <td class="t3" colspan="4">Bank IFSC:</td>
+            <td class="t3" colspan="4">Bank IFSC: <?php echo $row6['IFSC']; ?></td>
           </tr>
 
           <tr>
@@ -349,30 +351,21 @@ $row2=mysqli_fetch_assoc($res2);
             
           </tr>
 
-          <tr></tr>
-          <tr></tr>
-          <tr></tr>
-          <tr></tr>
-         
-          
-       
         </table>
 
 </div>   
 
-<button type="button" id="printMe">Print</button>
-
+  <div>
+     <center> <button type="button" id="printMe" style="cursor:pointer; margin-top:50px; padding-bottom:55px; width:15%; height:50px; background-color:aqua;"><h2>Print</h2></button></center>
+  </div>
 
 <script type="text/javascript">
 $('#printMe').click(function() {
-    var divContents = document.getElementById("border").innerHTML;
-    var a = window.open('', '', 'height=500, width=500');
-    a.document.write('<html>');
-    a.document.write('<body>');
-    a.document.write(divContents);
-    a.document.write('</body></html>');
-    a.document.close();
-    a.print();
+    $('#printMe').hide();
+
+    window.print();
+
+    $('#printMe').show(); 
 });
 </script>
 

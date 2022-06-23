@@ -4,6 +4,7 @@ include 'class.php';
 $ob=new DB();
 $res=$ob->selectquery("customer_details");
 $res1=$ob->selectquery("item");
+$res2=$ob->selectquery("customer_details");
 // $row=mysqli_fetch_assoc($res);
 ?>
 <!DOCTYPE html> 
@@ -38,14 +39,25 @@ $res1=$ob->selectquery("item");
 
                     <table class="table table-bordered" id="t1Div">
                         <tr>
-                            <td> Customer:</td>
+                            <td>Order Customer:</td>
                             <td><select class="sel" name="cust" id="cust">
                                 <?php while($row=mysqli_fetch_assoc($res))
                                 {?>
 
-                                <option value="<?php echo $row['Mobile']?>"><?php echo $row['dc_name']."-".$row['Mobile']?></option><?php
+                                <option value="<?php echo $row['Mobile']?>"><?php echo $row['oc_name']."-".$row['Mobile']?></option><?php
                                 }?>
                             </select></td>
+
+
+                            <td>Delivery Customer:</td>
+                            <td><select class="sel" name="cust1" id="cust1">
+                                <?php while($row2=mysqli_fetch_assoc($res2))
+                                {?>
+
+                                <option value="<?php echo $row2['Mobile']?>"><?php echo $row2['oc_name']."-".$row2['Mobile']?></option><?php
+                                }?>
+                            </select></td>
+
                         </tr>
 
                         <tr id = "t1">
@@ -68,7 +80,7 @@ $res1=$ob->selectquery("item");
                             ?>
                             </td>
                         
-                            <td>Quantity:</td>
+                            <td>Weight (in kg) : </td>
                             <td><input type="number" name="quantity" id="quantity_1"></td>
                         
                              <td ><button id="addRow" type="button" class="btn btn-info">+</button></td>
@@ -100,7 +112,7 @@ $res1=$ob->selectquery("item");
             // html += '<td><select name="it" id="it1">'; 
             html += dropdownhtml;
             html += '</select></td>'; 
-            html += '<td>Quantity:</td>';            
+            html += '<td>Weight (in kg) : </td>';            
             html += '<td><input type="number" name="quantity" id="quantity_'+loopInc+'"></td>';
 
             html += '<td><button id="removeRow" type="button" class="btn btn-danger">-</button></td>';
@@ -123,6 +135,8 @@ $res1=$ob->selectquery("item");
         //submit button
          $('.submit-btn').click(function(){
              let mob=$('#cust').val();
+             let mob1=$('#cust1').val();
+
              console.log(loopInc);
              var item = [];
              var qua =[];
@@ -133,52 +147,53 @@ $res1=$ob->selectquery("item");
                  
                 }
 
-    // var valid = check();
-    //     if(!valid){
-    //         return;
-    //     }
-    //     var i;
-    //             console.log(qua);
+    var valid = check();
+        if(!valid){
+            return;
+        }
+        var i;
+                console.log(qua);
 
-    //     function check()
-    //     {
-    //                         console.log(qua);
+        function check()
+        {
+                            console.log(qua);
 
-    //         for(i=1;i<loopInc;i++){
-    //         if(qua[i-1]==""){
-    //             // frm.quantity.focus();
-    //             alert("Please fill the 'Quantity' field");
-    //             return false;
-    //         }
+            for(i=1;i<loopInc;i++){
+            if(qua[i-1]==""){
+                // frm.quantity.focus();
+                alert("Please fill the 'Quantity' field");
+                return false;
+            }
 
-    //         else if(checkQuant(qua,i))
-    //             {
-    //                 alert("'Quantity' cannot be zero");
-    //                 // frm.quantity.focus();
-    //                 return false;
-    //             }
+            else if(checkQuant(qua,i))
+                {
+                    alert("'Quantity' cannot be zero");
+                    // frm.quantity.focus();
+                    return false;
+                }
         
-    //         }
+            }
 
-    //         return true;
-    //     }
+            return true;
+        }
 
-    // //  console.log(i);  
-    //     function checkQuant(qua,i)
-    //         {
-    //             if(qua[i-1]==0){
-    //                 return true;
-    //             }
+    //  console.log(i);  
+        function checkQuant(qua,i)
+            {
+                if(qua[i-1]==0){
+                    return true;
+                }
 
-    //             return false;
-    //         }
+                return false;
+            }
 
-            //  qua=$('#quantity').val();
+
              $.ajax({
                 method: "post",
                 url: "http://localhost/Invoice/items.php",
                 data:{
                     mobile:mob,
+                    mobile1:mob1,
                     items:item,
                     quantity:qua
                 }

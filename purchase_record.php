@@ -1,5 +1,4 @@
 <?php
-
 require 'session.php';
 
 include 'class.php';
@@ -70,17 +69,17 @@ $res1=$obj->selectquery("c_details",$arr);
         <h1 id="h">Purchase Details</h1>
         <table id="tab"class="table table-bordered table-hover table-success table-striped">
             <thead class="table-info">
-                <th class="serial">serial</th>
-                <th>customer Id</th>
-                <th>invoice no</th>
-                <th>order Date</th>
-                <th>view</th>
-                <th>print</th>
+                <th class="serial">Serial No.</th>
+                <th>Order Customer Id</th>
+                <th>Delivery Customer Id</th>
+                <th>Invoice No.</th>
+                <th>Order Date</th>
+                <th>View</th>
+                <th>Print</th>
                 <th>Delete</th>
             </thead>
             <tbody>
                <?php $i=1;
-               $h1;
                 $row1=mysqli_fetch_assoc($res1);
                 $code=$row1['code'];
 
@@ -90,12 +89,13 @@ $res1=$obj->selectquery("c_details",$arr);
                     <tr  id="<?php echo 't_'.$row['invoice_no']?>">
                         <td><?php echo $i?></td>
                         <td><?php echo $row['customer_id']?></td>
+                        <td><?php echo $row['dc_id']?></td>
                         <td><?php echo $code.$row['invoice_no']?></td>
                         <td><?php echo $row['order_date']?></td>
                         <td><button  data-fancybox data-src="#content" id="btn" class="btn btn-info" value="<?php echo $row['invoice_no']?>">view</button></td>
-                      <?php  $h1=$row['invoice_no']; ?>
-                        <td><button class="print-btn btn btn-info"><a href ="table.php?id=<?php echo $h1; ?>"
-                        target="_blank">print</a></button></td>
+                      <td><button class="print-btn btn btn-info" value="<?php echo $row['invoice_no']?>">Print</button>
+
+                     
                         <td><button class="del-btn btn btn-info" value="<?php echo $row['invoice_no']?>">Delete</button></td>
                     </tr><?php
                     $var++;
@@ -174,6 +174,14 @@ $res1=$obj->selectquery("c_details",$arr);
             });
 
         });
+
+        $('.print-btn').click(function(){
+
+            var print = $(this).val();
+            window.open("http://localhost/Invoice/table1.php?id="+print+"");
+        });
+
+
     </script>
 
 </body>

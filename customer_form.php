@@ -35,8 +35,8 @@ require ('session.php');
                         <tr>
                             <td>Order Customer Name:</td>
                             <td><input type="text" name="ocname" id="ocname" class="validateMe" data-title="CUstomer Name"></td>
-                            <td>Delivery Customer Name:</td>
-                            <td><input type="text" name="dcname" id="dcname"></td>
+                            <!-- <td>Delivery Customer Name:</td>
+                            <td><input type="text" name="dcname" id="dcname"></td> -->
                         </tr>
                         
                         <tr>
@@ -51,7 +51,7 @@ require ('session.php');
                             <td>State:</td>
                             <td>
                                 <select name="state" id="bstate" class="select">
-                                    <option value="Andaman & Nicobar Icelands">Andaman & Nicobar Icelands</option>
+                                    <option value="Andaman & Nicobar Icelands">Andaman & Nicobar Islands</option>
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                                     <option value="Assam">Assam</option>
@@ -107,7 +107,7 @@ require ('session.php');
                             <td>State:</td>
                             <td>
                                 <select name="state" id="sstate" class="select1">
-                                    <option value="Andaman & Nicobar Icelands">Andaman & Nicobar Icelands</option>
+                                    <option value="Andaman & Nicobar Icelands">Andaman & Nicobar Islands</option>
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                                     <option value="Assam">Assam</option>
@@ -201,7 +201,7 @@ require ('session.php');
 
         $('.submit-btn').click(function(){
         let ocname=$('#ocname').val();
-        let dcname=$('#dcname').val();
+        // let dcname=$('#dcname').val();
         let mobno=$('#mobno').val();
         let badd=$('#badd').val();
         let bstate=$('#bstate').val();
@@ -232,18 +232,18 @@ require ('session.php');
                 }
 
 
-            if(dcname==""){
-                frm.dcname.focus();
-                alert("Please fill the 'Delivery Customer Name' field");
-                return false;
-            }
+            // if(dcname==""){
+            //     frm.dcname.focus();
+            //     alert("Please fill the 'Delivery Customer Name' field");
+            //     return false;
+            // }
 
-            else if(checkDCname(dcname))
-                {
-                    alert("Only characters are allowed in the 'Delivery Customer Name' field");
-                    frm.dcname.focus();
-                    return false;
-                }
+            // else if(checkDCname(dcname))
+            //     {
+            //         alert("Only characters are allowed in the 'Delivery Customer Name' field");
+            //         frm.dcname.focus();
+            //         return false;
+            //     }
 
 
              if(mobno==""){
@@ -322,10 +322,10 @@ require ('session.php');
                 return /[\W\d]+/.test(ocname);
             }
 
-        function checkDCname(dcname)
-            {
-                return /[\W\d]+$/.test(dcname);
-            }
+        // function checkDCname(dcname)
+        //     {
+        //         return /[\W\d]+$/.test(dcname);
+        //     }
 
         function checkMobNo(mobno)
             {
@@ -358,7 +358,7 @@ require ('session.php');
                 url:"http://localhost/Invoice/insert_cust_details.php",
                 data: {
                     ocname  :ocname,
-                    dcname  :dcname,
+                    // dcname  :dcname,
                     mobno   :mobno,
                     badd    :badd,
                     bstate  :bstate,

@@ -22,7 +22,7 @@ if($arr['Mobile']<9999999999 && $arr['Mobile']>6000000000)
                 $html .= '<td>'.$i.'</td>';
                 $html .= '<td>'.$row['customer_id'].'</td>';
                 $html .= '<td>'.$row['oc_name'].'</td>';
-                $html .= '<td>'.$row['dc_name'].'</td>';
+                // $html .= '<td>'.$row['dc_name'].'</td>';
                 $html .= '<td>'.$row['Mobile'].'</td>';
                 $html .= '<td>'.$row['bill_add'].'</td>';
                 $html .= '<td>'.$row['bstate'].'</td>';

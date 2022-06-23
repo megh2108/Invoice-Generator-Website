@@ -3,7 +3,7 @@ include 'class.php';
 
 $ob=new DB();
 $ocname=$_POST['ocname'];
-$dcname=$_POST['dcname'];
+// $dcname=$_POST['dcname'];
 $mobno=$_POST['mobno'];
 $badd=$_POST['badd'];
 $bstate=$_POST['bstate'];
@@ -22,11 +22,11 @@ if($row)
 }
 else{
 
-    $arr=array('oc_name'=>"'$ocname'",'dc_name'=>"'$dcname'",'Mobile'=>"'$mobno'",'bill_add'=>"'$badd'",'bstate'=>"'$bstate'",'bcode'=>"'$bcode'",'ship_add'=>"'$sadd'",'sstate'=>"'$sstate'",'scode'=>"'$scode'");
+    $arr=array('oc_name'=>"'$ocname'",'Mobile'=>"'$mobno'",'bill_add'=>"'$badd'",'bstate'=>"'$bstate'",'bcode'=>"'$bcode'",'ship_add'=>"'$sadd'",'sstate'=>"'$sstate'",'scode'=>"'$scode'");
     $ob->insertQuery("customer_details",$arr);
     echo "Data inserted successfully";
 }
 
-
+// 'dc_name'=>"'$dcname'",
 
 ?>
