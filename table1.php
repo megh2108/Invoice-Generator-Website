@@ -11,10 +11,15 @@ $arr1=array('invoice_no'=>$val1);
 $uname=$_SESSION['uname'];
 $arr = array('username'=>$uname);
 $res = $ob->selectquery('c_details',$arr);
-// $res1 = $ob->selectquery('record_details',$arr1);
+$res1 = $ob->selectquery('record_details',$arr1);
 $row = mysqli_fetch_assoc($res);
 
 $row1=mysqli_fetch_assoc($res1);
+$custid=$row1['customer_id'];
+$arr2=array('customer_id'=>$custid);
+$res2 = $ob->selectquery('customer_details',$arr2);
+$row2=mysqli_fetch_assoc($res2);
+
 
 ?>
 
@@ -109,11 +114,11 @@ $row1=mysqli_fetch_assoc($res1);
               </tr>
               <tr>
             
-                <td  class="t3" colspan="4" > Invoice No : <?php echo $row1['GST_no']?> </td>
+                <td  class="t3" colspan="4" > Invoice No : <?php echo $row['code'].$row1['invoice_no']?> </td>
                 <td  class="t3" colspan="2">Transport Mode : </td>
               </tr>
               <tr>
-                <td  class="t3" colspan="4">Invoice date : </td>
+                <td  class="t3" colspan="4">Invoice date :<?php echo $row1['order_date']?> </td>
                 <td  class="t3" colspan="2" >  Vehicle Number : </td>
               </tr>
               <tr>
@@ -143,7 +148,7 @@ $row1=mysqli_fetch_assoc($res1);
                 <td  colspan="6" style="text-align:center;background-color: aqua;">Ship to Party</td>
               </tr>
               <tr >
-                <td class="t3" colspan="6">Name : </td>
+                <td class="t3" colspan="6">Name : <?php echo $row2['oc_name']?></td>
                 <td class="t3" colspan="6">Name : </td>
               </tr>
               <tr>
