@@ -102,7 +102,7 @@
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
       data-bs-toggle="dropdown" aria-expanded="false">
       <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
-      <strong>mdo</strong>
+      <strong>More</strong>
     </a>
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
       <li><a class="dropdown-item" id="sign_out" data-fancybox data-src="#logout"  href="#"><i class="bi bi-power"></i> Sign Out</a></li>
@@ -113,7 +113,7 @@
 <!-- Fancybox code -->
 <div id="logout" style="display:none;">
         <div class="modal-body p-4 text-center">
-          <h5 class="mb-0">Are you Sure Want to Logout?</h5> 
+          <h5 class="mb-0">Are you Sure that you want to Logout?</h5> 
         </div>
 
         <div class="modal-footer flex-nowrap p-0">
@@ -128,9 +128,9 @@
       <script src="sidebars.js"></script>
       
       <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+     
       </main>
 <!-- sidebar.php -->
-
-
+     
   </body>
 </html>

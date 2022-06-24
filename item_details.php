@@ -85,9 +85,27 @@ $res2=$ob->selectquery("customer_details");
                         
                              <td ><button id="addRow" type="button" class="btn btn-info">+</button></td>
                         </tr>
-  
+
+                        
+                    </table>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Transport Mode :</td>
+                            <td>
+                                <select class="sel" name="tmode" id="tmode">
+                                    <option value="By Road">By Road</option>
+                                    <option value="By Ship">By Ship</option>
+                                </select>
+                            </td>
+                            <td>Vehicle Number :</td>
+                            <td><input type="text" id="vno" name="vno"></td>
+                            <td>TCS(%) :</td>
+                            <td><input type="text" id="tcs" name="tcs" value="0"></td>
+                        </tr>
+
                     </table>
                     <table>
+                        
                     <tr>
                             <td id="res"><input type="button" value="Reset" class="reset"></td>
                             <td id="sub" colspan="3">
@@ -136,6 +154,9 @@ $res2=$ob->selectquery("customer_details");
          $('.submit-btn').click(function(){
              let mob=$('#cust').val();
              let mob1=$('#cust1').val();
+             let tmode=$('#tmode').val();
+             let vno=$('#vno').val();
+             let tcs=$('#tcs').val();
 
              console.log(loopInc);
              var item = [];
@@ -195,7 +216,10 @@ $res2=$ob->selectquery("customer_details");
                     mobile:mob,
                     mobile1:mob1,
                     items:item,
-                    quantity:qua
+                    quantity:qua,
+                    tmode:tmode,
+                    vno:vno,
+                    tcs:tcs
                 }
              }).done(function(){
                 alert("data inserted successfully");

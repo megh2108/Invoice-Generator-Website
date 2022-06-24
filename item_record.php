@@ -64,6 +64,7 @@ $res=$obj->selectquery("item");
             <thead class="table-info">
                 <th class="serial">serial</th>
                 <th>Item Name</th>
+                <th>HSN Code</th>
                 <th>Base Price</th>
                 <th>GST</th>
                 <th>Total Price</th>
@@ -79,6 +80,7 @@ $res=$obj->selectquery("item");
                     <tr  id="<?php echo 't_'.$row['item_name']?>">
                         <td><?php echo $i?></td>
                         <td><?php echo $row['item_name']?></td>
+                        <td><?php echo $row['HSN_Code']?></td>
                         <td><?php echo $row['base_price']?></td>
                         <td><?php echo $row['GST']?></td>
                         <td><?php echo $row['total_price']?></td>

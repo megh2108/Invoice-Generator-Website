@@ -37,6 +37,11 @@
                             <td><input type="text" name="itname" id="itname"></td>
                             
                         </tr>
+                        <tr>
+                            <td>HSN Code:</td>
+                            <td><input type="text" name="hsn" id="hsn"></td>
+                            
+                        </tr>
                         
                         <tr>
                             <td>Base Price</td>
@@ -70,6 +75,7 @@
         let itname=$('#itname').val();
         let bprice=$('#bprice').val();
         let gst=$('#gst').val();
+        let hsn=$('#hsn').val();
 
         var valid = check();
         if(!valid){
@@ -156,15 +162,17 @@
                 itname  :itname,
                 bprice  :bprice,
                 gst   :gst,
-               
+                hsn: hsn
             }
         }).done(function(){
             alert("data inserted successfully");
         });
 
-        $('#itname').val('');
-        $('#bprice').val('');
-        $('#gst').val('');
+        // $('#itname').val('');
+        // $('#bprice').val('');
+        // $('#gst').val('');
+
+        $('.reset').click();
 
         });
     </script>

@@ -1,4 +1,5 @@
 <?php
+require 'session.php';
 include 'class.php';
 $obj= new DB();
 // $result = $obj -> dbConnect();
@@ -36,15 +37,15 @@ $res=$obj->selectquery("customer_details");
                 <table id="tab"class="table table-bordered table-hover table-success table-striped">
                 <thead class="table-info">
                     
-                    <th>Sr_No.</th>    
-                    <th>customer Id</th>
-                    <th>o_customer</th>
-                    <!-- <th>D_customer</th> -->
-                    <th>mobile</th>
-                    <th>Billing_add</th>
-                    <th>Billing_State</th>
-                    <th>shipping_add</th>
-                    <th>shipping_state</th>
+                    <th>Sr No.</th>    
+                    <th>Customer Id</th>
+                    <th>Customer Name</th>
+                    <th>GSTIN</th>
+                    <th>Mobile No.</th>
+                    <th>Billing Add</th>
+                    <th>Billing State</th>
+                    <th>Shipping Add</th>
+                    <th>Shipping State</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </thead>
@@ -57,7 +58,7 @@ $res=$obj->selectquery("customer_details");
                             <td><?php echo $i?></td>
                             <td><?php echo $row['customer_id']?></td>
                             <td><?php echo $row['oc_name']?></td>
-                            <!-- <td><?php //echo $row['dc_name']?></td> -->
+                            <td><?php echo $row['GSTIN']?></td>
                             <td><?php echo $row['Mobile']?></td>
                             <td><?php echo $row['bill_add']?></td>
                             <td><?php echo $row['bstate']?></td>

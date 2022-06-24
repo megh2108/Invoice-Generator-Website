@@ -1,13 +1,24 @@
 <?php
 
-    session_start();
+session_start();
 
-    // require(!isset($_SESSION['uname']));
+$time = 30*60;
+
     if(!isset($_SESSION['uname']))
     {
-       header("location:http://localhost/Invoice/login.php");
-    //    header("location:http://localhost/invoice/index.php");
+       header("location:http://localhost/invoice/index.php");
     }
-    
-
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $time)) {
+        session_unset();
+        session_destroy();
+        header("location:http://localhost/invoice/index.php");
+        
+    } 
+    // echo "1. In If"."<br>";
+    // echo "Current Time ".time()."<br>";
+    // echo "LAST_ACTIVITY Time ".$_SESSION['LAST_ACTIVITY']."<br>";
+    // echo "Diff Time ".($time - $_SESSION['LAST_ACTIVITY'])."<br>";
+    // session_unset();
+    // session_destroy();
+    // header("location:http://localhost/invoice/index.php");
 ?>

@@ -19,6 +19,12 @@ $html.= '                            <td>Item Name:</td>';
 $html.= '                            <td><input type="text" name="itname" id="itname"></td>';
                             
 $html.= '                        </tr>';
+
+$html.= '                        <tr>';
+$html.= '                            <td>HSN Code:</td>';
+$html.= '                            <td><input type="text" name="hsn" id="hsn"></td>';
+                            
+$html.= '                        </tr>';
                         
 $html.= '                        <tr>';
 $html.= '                            <td>Base Price</td>';
@@ -47,6 +53,7 @@ echo $html;
 <script>
 
         $('#itname').val("<?php echo $row['item_name'] ?>");
+        $('#hsn').val("<?php echo $row['HSN_Code'] ?>");
         $('#bprice').val("<?php echo $row['base_price'] ?>");
         $('#gst').val("<?php echo $row['GST'] ?>");
 
@@ -55,6 +62,7 @@ echo $html;
         
 
             let itname=$('#itname').val();
+            let hsn=$('#hsn').val();
             let bprice=$('#bprice').val();
             let gst=$('#gst').val();
             
@@ -66,13 +74,14 @@ echo $html;
                             itname  :itname,
                             bprice  :bprice,
                             gst   :gst,
+                            hsn:hsn
                             
                         }
                     }).done(function(){
                         alert("data updated successfully");
                     });
 
-            // $('.reset').click();
+            $('.reset').click();
 
         });
 

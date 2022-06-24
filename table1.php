@@ -134,11 +134,11 @@ $row6=mysqli_fetch_assoc($res6);
               <tr>
             
                 <td  class="t3" colspan="4" > Invoice No : <?php echo $row['code'].$row1['invoice_no']?> </td>
-                <td  class="t3" colspan="2">Transport Mode : </td>
+                <td  class="t3" colspan="2">Transport Mode : <?php echo $row1['transport_mode']?> </td>
               </tr>
               <tr>
                 <td  class="t3" colspan="4">Invoice date :<?php echo $row1['order_date']?> </td>
-                <td  class="t3" colspan="2" >  Vehicle Number : </td>
+                <td  class="t3" colspan="2" >  Vehicle Number :<?php echo $row1['vehicle_no']?></td>
               </tr>
               <tr>
                <td  class="t3" colspan="4">Reverse Charge (Y/N) : </td>
@@ -175,8 +175,8 @@ $row6=mysqli_fetch_assoc($res6);
                 <td class="t3" colspan="6">Address : <?php echo $row3['ship_add']?></td>
               </tr>
               <tr>
-               <td class="t3" colspan="6">GSTIN : </td>
-               <td class="t3" colspan="6"> GSTIN : </td>
+               <td class="t3" colspan="6">GSTIN : <?php echo $row2['GSTIN']?> </td>
+               <td class="t3" colspan="6"> GSTIN : <?php echo $row3['GSTIN']?> </td>
               </tr>
                <tr>
                 <td class="t3" colspan="4">State : <?php echo $row2['bstate']?></td>
@@ -236,7 +236,7 @@ $row6=mysqli_fetch_assoc($res6);
 
              
 
-              <td class="t1">40040000</td>
+              <td class="t1"><?php echo $row5['HSN_Code']; ?></td>
               <td class="t1"><?php echo $row4['quantity']; ?></td>
               <td class="t1"><?php echo $row5['base_price']; ?></td>
               <td class="t1"><?php echo $amnt = $row4['quantity']*$row5['base_price']; ?></td>
@@ -252,6 +252,10 @@ $row6=mysqli_fetch_assoc($res6);
                $amnt_total+=$amnt;
                $gst_amnt_total+=$gstamnt;
                $final_total += $row4['final_price'];
+
+               $tc = $row1['TCS']*0.01;
+               $tcs= $final_total*$tc;
+               $final = $final_total + $tcs;
               
               ?>
             
@@ -282,7 +286,7 @@ $row6=mysqli_fetch_assoc($res6);
             </tr>
 
             <tr>
-              <td rowspan="5" colspan="8"  class="t2" ><?php digit_to_word($final_total);?></td>
+              <td rowspan="5" colspan="8"  class="t2" ><?php digit_to_word($final);?></td>
               <td class="t3" colspan="3">Add: IGST</td>
               <td class="t1"><?php echo $gst_amnt_total; ?></td>
             </tr>
@@ -290,17 +294,18 @@ $row6=mysqli_fetch_assoc($res6);
               <td class="t3" colspan="3">Total Amount after Tax:</td>
               <td class="t1"><?php echo $final_total; ?></td>
             </tr>
-
+            
+            
         
             <tr>
-              <td class="t3" colspan="3">TCS @ 0.1%</td>
-              <!-- <td class="t1"><?php //echo $tcs= $final_total*0.001 ?></td> -->
-              <td class="t1">0</td>
+              <td class="t3" colspan="3">TCS @ <?php echo  $row1['TCS']?> %</td>
+              <td class="t1"><?php echo $tcs ; ?></td>
+              <!-- <td class="t1"></td> -->
             </tr>
              
             <tr>
-              <td class="t3" colspan="3">Net TOTAL</td>
-              <td class="t1"><?php echo $final_total; ?></td>
+              <td class="t3" colspan="3">Net TOTAL</td>              
+              <td class="t1"><?php echo $final ;?></td>
               
             </tr>
              

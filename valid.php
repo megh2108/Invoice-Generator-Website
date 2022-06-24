@@ -1,4 +1,5 @@
 <?php
+// ini_set('session.gc_maxlifetime',5);
 session_start();
 include 'class.php';
 
@@ -19,6 +20,8 @@ $res=$ob->selectQuery("c_details",$arr);
 
 if($check_user)
 {
+    $_SESSION['LAST_ACTIVITY'] = time();
+
     $_SESSION['uname'] = $name; 
     echo "true";
   

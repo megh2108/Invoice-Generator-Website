@@ -155,24 +155,25 @@ $res1=$obj->selectquery("c_details",$arr);
 
         $('.del-btn').click(function(){
 
+            if(confirm("Are you sure want to delete it?")) {
                 let val = $(this).val();
-                console.log(val);
+                    console.log(val);
 
-            $.ajax({
-                method: "POST",
-                url:"http://localhost/Invoice/delete_purchase_record.php",
-                
-                data:
-                {
-                    value: val 
-                }
-            }).done(function(response){
+                $.ajax({
+                    method: "POST",
+                    url:"http://localhost/Invoice/delete_purchase_record.php",
+                    
+                    data:
+                    {
+                        value: val 
+                    }
+                }).done(function(response){
 
-                // let var="<?php echo $var?>";
-                alert("Data deleted successfully");
-                $('#t_'+val).html("");
-            });
-
+                    // let var="<?php echo $var?>";
+                    alert("Data deleted successfully");
+                    $('#t_'+val).html("");
+                });
+            }
         });
 
         $('.print-btn').click(function(){

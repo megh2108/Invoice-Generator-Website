@@ -30,9 +30,11 @@ class DB{
 
         $res = mysqli_query($con,$insertquery);
 
-        if($res){
-            echo "Inserted Successfully\n";
-        }
+        return $con->insert_id;
+
+        // if($res){
+        //     echo "Inserted Successfully\n";
+        // }
     }
 
     
@@ -141,7 +143,7 @@ class DB{
                 }
             }
 
-       echo $upd = "UPDATE $tabname SET" .$upd_query. " WHERE ".$set_query;
+        $upd = "UPDATE $tabname SET" .$upd_query. " WHERE ".$set_query;
         }
 
        mysqli_query($con,$upd);
@@ -179,7 +181,7 @@ class DB{
                 }
             }
 
-            echo $del = "DELETE from $tablename WHERE".$where_query1;
+             $del = "DELETE from $tablename WHERE".$where_query1;
 
        }
 

@@ -10,6 +10,9 @@ $arr3=array('Mobile'=>$mob1);
 
 $it=$_POST['items'];
 $qua=$_POST['quantity'];
+$tmode=$_POST['tmode'];
+$vno=$_POST['vno'];
+$tcs=$_POST['tcs'];
 
 $ret=$ob->selectquery("customer_details",$arr);
 $row=mysqli_fetch_assoc($ret);
@@ -24,12 +27,13 @@ $id10=$row10['customer_id'];
 $date= date("Y-m-d");
 
 
-$arr1 = array('customer_id'=>"'$id'",'dc_id'=>"'$id10'",'order_date'=>"'$date'");
+// $arr1 = array('customer_id'=>"'$id'",'dc_id'=>"'$id10'",'order_date'=>"'$date'");
+$arr1 = array('customer_id'=>"'$id'",'dc_id'=>"'$id10'",'order_date'=>"'$date'",'transport_mode'=>"'$tmode'",'vehicle_no'=>"'$vno'",'TCS'=>"'$tcs'");
 $arr2 = array('customer_id'=>$id,'dc_id'=>$id10,'order_date'=>$date);
-$ob->insertQuery('record_details',$arr1);
+$last_invoice_id = $ob->insertQuery('record_details',$arr1);
 $ret1 = $ob->selectquery("record_details",$arr2);
 $row2 =mysqli_fetch_assoc($ret1);
-$invoice = $row2['invoice_no'];
+echo $invoice = $last_invoice_id;//$row2['invoice_no'];
 
 // echo "<pre>";
 // print_r($_POST);

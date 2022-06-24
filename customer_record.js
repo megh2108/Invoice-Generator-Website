@@ -20,23 +20,27 @@ $('#fil').click(function() {
 
 $('.del').click(function() {
 
-    let val = $(this).val();
-    console.log(val);
-
-    $.ajax({
-        method: "POST",
-        url: "http://localhost/Invoice/delete_cust_record.php",
-
-        data: {
-            value: val
-        }
-    }).done(function(response) {
-
-        alert("Data deleted successfully");
-        $('#t_' + val).html("");
-    });
+    if(confirm("Are you sure want to delete it?")) {
+        let val = $(this).val();
+        console.log(val);
+    
+        $.ajax({
+            method: "POST",
+            url: "http://localhost/Invoice/delete_cust_record.php",
+    
+            data: {
+                value: val
+            }
+        }).done(function(response) {
+    
+            alert("Data deleted successfully");
+            $('#t_' + val).html("");
+        });
+    }
 
 });
+
+
 
 var value;
 

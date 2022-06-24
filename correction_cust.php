@@ -12,10 +12,8 @@ $html.=            '<table class="table table-bordered border border-2 border-wa
 $html.=                '<tr>';
 $html.=                    '<td>Order Customer Name:</td>';
 $html.=                    '<td><input type="text" name="ocname" id="ocname" ></td>';
-// $html.=                    '<td>Delivery Customer Name:</td>';
-// $html.=                    '<td><input type="text" name="dcname" id="dcname"></td>';
-$html.=                '<td></td><td></td>';
-
+$html.=                    '<td>GSTIN:</td>';
+$html.=                    '<td><input type="text" name="gstin" id="gstin"></td>';
 $html.=                '</tr>';
 $html.=                '<tr>';
 $html.=                    '<td>Mobile number:</td>';
@@ -33,7 +31,7 @@ $html.=                '<tr>';
 $html.=                    '<td>State:</td>';
 $html.=                    '<td>';
 $html.=                       '<select name="state" id="bstate" class="select">';
-$html.=                            '<option value="Andaman & Nicobar Icelands">Andaman & Nicobar Icelands</option>';
+$html.=                            '<option value="Andaman & Nicobar Islands">Andaman & Nicobar Islands</option>';
 $html.=                            '<option value="Andhra Pradesh">Andhra Pradesh</option>';
 $html.=                            '<option value="Arunachal Pradesh">Arunachal Pradesh</option>';
 $html.=                            '<option value="Assam">Assam</option>';
@@ -92,7 +90,7 @@ $html.=                '<tr>';
 $html.=                    '<td>State:</td>';
 $html.=                    '<td>';
 $html.=                        '<select name="state" id="sstate" class="select1">';
-$html.=                            '<option value="Andaman & Nicobar Icelands">Andaman & Nicobar Icelands</option>';
+$html.=                            '<option value="Andaman & Nicobar Islands">Andaman & Nicobar Islands</option>';
 $html.=                           '<option value="Andhra Pradesh">Andhra Pradesh</option>';
 $html.=                            '<option value="Arunachal Pradesh">Arunachal Pradesh</option>';
 $html.=                            '<option value="Assam">Assam</option>';
@@ -147,7 +145,7 @@ echo $html;
 <script>
    
     $('#ocname').val("<?php echo $row['oc_name']?>");
-    // $('#dcname').val("<?php //echo $row['dc_name']?>");
+    $('#gstin').val("<?php echo $row['GSTIN']?>");
     $('#mobno').val("<?php echo $row['Mobile']?>");
     $('#badd').val("<?php echo $row['bill_add']?>");
     $('#bstate').val("<?php echo $row['bstate']?>").change();
@@ -164,7 +162,8 @@ echo $html;
     console.log(custid);
 
     let ocname = $('#ocname').val();
-    // let dcname = $('#dcname').val();
+    let gstin = $('#gstin').val();
+    let length = gstin.length;
     let mobno = $('#mobno').val();
     let badd = $('#badd').val();
     let bstate = $('#bstate').val();
@@ -194,18 +193,17 @@ echo $html;
                 }
 
 
-            // if(dcname==""){
-            //     frm.dcname.focus();
-            //     alert("Please fill the 'Delivery Customer Name' field");
-            //     return false;
-            // }
+                if(gstin==""){
+                frm.gstin.focus();
+                alert("Please fill the 'GSTIN' field");
+                return false;
+            }
 
-            // else if(checkDCname(dcname))
-            //     {
-            //         alert("Only characters are allowed in the 'Delivery Customer Name' field");
-            //         frm.dcname.focus();
-            //         return false;
-            //     }
+            else if(length!=15){
+                    alert("Exactly 15 characters are allowed in the 'GSTIN' field");
+                    frm.gstin.focus();
+                    return false;
+                }
 
 
              if(mobno==""){
@@ -284,11 +282,7 @@ echo $html;
                 return /[\W\d]+/.test(ocname);
             }
 
-        // function checkDCname(dcname)
-        //     {
-        //         return /[\W\d]+/.test(dcname);
-        //     }
-
+        
         function checkMobNo(mobno)
             {
                 return /^[6-9]{1}[\d]{9}$/.test(mobno);
@@ -321,7 +315,7 @@ echo $html;
         data: {
             custid: custid,
             ocname: ocname,
-            // dcname: dcname,
+            gstin: gstin,
             mobno: mobno,
             badd: badd,
             bstate: bstate,

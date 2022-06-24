@@ -33,10 +33,10 @@ require ('session.php');
 
                     <table class="table table-bordered">
                         <tr>
-                            <td>Order Customer Name:</td>
+                            <td>Customer Name:</td>
                             <td><input type="text" name="ocname" id="ocname" class="validateMe" data-title="CUstomer Name"></td>
-                            <!-- <td>Delivery Customer Name:</td>
-                            <td><input type="text" name="dcname" id="dcname"></td> -->
+                            <td>GSTIN:</td>
+                            <td><input type="text" name="gstin" id="gstin"></td>
                         </tr>
                         
                         <tr>
@@ -51,7 +51,7 @@ require ('session.php');
                             <td>State:</td>
                             <td>
                                 <select name="state" id="bstate" class="select">
-                                    <option value="Andaman & Nicobar Icelands">Andaman & Nicobar Islands</option>
+                                    <option value="Andaman & Nicobar Islands">Andaman & Nicobar Islands</option>
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                                     <option value="Assam">Assam</option>
@@ -107,7 +107,7 @@ require ('session.php');
                             <td>State:</td>
                             <td>
                                 <select name="state" id="sstate" class="select1">
-                                    <option value="Andaman & Nicobar Icelands">Andaman & Nicobar Islands</option>
+                                    <option value="Andaman & Nicobar Islands">Andaman & Nicobar Islands</option>
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                                     <option value="Assam">Assam</option>
@@ -201,7 +201,11 @@ require ('session.php');
 
         $('.submit-btn').click(function(){
         let ocname=$('#ocname').val();
-        // let dcname=$('#dcname').val();
+
+        let gstin=$('#gstin').val();
+        let length = gstin.length;
+        console.log(length);
+
         let mobno=$('#mobno').val();
         let badd=$('#badd').val();
         let bstate=$('#bstate').val();
@@ -232,18 +236,17 @@ require ('session.php');
                 }
 
 
-            // if(dcname==""){
-            //     frm.dcname.focus();
-            //     alert("Please fill the 'Delivery Customer Name' field");
-            //     return false;
-            // }
+            if(gstin==""){
+                frm.gstin.focus();
+                alert("Please fill the 'GSTIN' field");
+                return false;
+            }
 
-            // else if(checkDCname(dcname))
-            //     {
-            //         alert("Only characters are allowed in the 'Delivery Customer Name' field");
-            //         frm.dcname.focus();
-            //         return false;
-            //     }
+            else if(length!=15){
+                    alert("Exactly 15 characters are allowed in the 'GSTIN' field");
+                    frm.gstin.focus();
+                    return false;
+                }
 
 
              if(mobno==""){
@@ -322,9 +325,9 @@ require ('session.php');
                 return /[\W\d]+/.test(ocname);
             }
 
-        // function checkDCname(dcname)
+        // function checkGSTIN(gstin)
         //     {
-        //         return /[\W\d]+$/.test(dcname);
+        //         return /[\W\D]{15}$/.test(gstin);
         //     }
 
         function checkMobNo(mobno)
@@ -358,7 +361,7 @@ require ('session.php');
                 url:"http://localhost/Invoice/insert_cust_details.php",
                 data: {
                     ocname  :ocname,
-                    // dcname  :dcname,
+                    gstin  :gstin,
                     mobno   :mobno,
                     badd    :badd,
                     bstate  :bstate,

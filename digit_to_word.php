@@ -38,14 +38,14 @@
     $str = array_reverse($str);
     $result = implode('', $str);
     $points = ($point) ?
-    "." . $words[$point / 10] . " " . 
+    ". " . $words[$point / 10] . " " . 
           $words[$point = $point % 10] : '';
 
           if($points==""){
             echo $result . "Rupees  only";
           }
           else{
-            echo $result . "Rupees  " . $points . " Paise only";
+            echo $result . "Rupees " . $points . " Paise only";
           }
 }
   ?> 
